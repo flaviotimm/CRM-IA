@@ -9,55 +9,57 @@ import { useCallback, useState } from "react";
  * supabase secrets set GEMINI_API_KEY=... UAIZAPI_TOKEN=...
  */
 export interface AppIntegrations {
-    // Google Gemini (chave grátis: https://aistudio.google.com/app/apikey)
+      // Google Gemini (chave grátis: https://aistudio.google.com/app/apikey)
   geminiApiKey: string;
-    geminiModel: string;
-    // UaiZapi (WhatsApp)
+      geminiModel: string;
+      // UaiZapi (WhatsApp)
   uaizapiBaseUrl: string;
-    uaizapiToken: string;
-    uaizapiInstance: string;
+      uaizapiToken: string;
+      uaizapiInstance: string;
 }
 
 const KEY = "q7_integrations";
 
 export const DEFAULT_INTEGRATIONS: AppIntegrations = {
-    geminiApiKey: "",
-    geminiModel: "gemini-2.5-flash-lite",
-    uaizapiBaseUrl: "",
-    uaizapiToken: "",
-    uaizapiInstance: "",
+      geminiApiKey: "",
+      geminiModel: "gemini-3.1-flash-lite",
+      uaizapiBaseUrl: "",
+      uaizapiToken: "",
+      uaizapiInstance: "",
 };
 
 export const GEMINI_MODELS = [
-    "gemini-2.5-flash-lite",
-    "gemini-2.5-flash",
-    "gemini-2.5-pro",
-  ];
+      "gemini-3.1-flash-lite",
+      "gemini-3.5-flash",
+      "gemini-2.5-flash-lite",
+      "gemini-2.5-flash",
+      "gemini-2.5-pro",
+    ];
 
 export function loadIntegrations(): AppIntegrations {
-    try {
-          const raw = localStorage.getItem(KEY);
-          if (!raw) return { ...DEFAULT_INTEGRATIONS };
-          return { ...DEFAULT_INTEGRATIONS, ...(JSON.parse(raw) as Partial<AppIntegrations>) };
-    } catch {
-          return { ...DEFAULT_INTEGRATIONS };
-    }
+      try {
+              const raw = localStorage.getItem(KEY);
+              if (!raw) return { ...DEFAULT_INTEGRATIONS };
+              return { ...DEFAULT_INTEGRATIONS, ...(JSON.parse(raw) as Partial<AppIntegrations>) };
+      } catch {
+              return { ...DEFAULT_INTEGRATIONS };
+      }
 }
 
 export function saveIntegrations(v: AppIntegrations) {
-    localStorage.setItem(KEY, JSON.stringify(v));
+      localStorage.setItem(KEY, JSON.stringify(v));
 }
 
 /** Hook de estado para as integrações, com persistência local. */
 export function useIntegrations() {
-    const [integrations, setIntegrations] = useState<AppIntegrations>(loadIntegrations);
+      const [integrations, setIntegrations] = useState<AppIntegrations>(loadIntegrations);
 
   const save = useCallback((patch: Partial<AppIntegrations>) => {
-        setIntegrations((cur) => {
-                const next = { ...cur, ...patch };
-                saveIntegrations(next);
-                return next;
-        });
+          setIntegrations((cur) => {
+                    const next = { ...cur, ...patch };
+                    saveIntegrations(next);
+                    return next;
+          });
   }, []);
 
   return { integrations, save };
