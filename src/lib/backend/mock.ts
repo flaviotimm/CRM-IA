@@ -87,7 +87,7 @@ function defaultSdrConfig(userId: string): SdrConfig {
     user_id: userId,
     agent_name: "Sofia",
     company_context:
-      "A Q7 Educação oferece cursos e formações. O agente atende leads no WhatsApp, tira dúvidas e conduz para a matrícula.",
+      "O Timm Advogado oferece cursos e formações. O agente atende leads no WhatsApp, tira dúvidas e conduz para a matrícula.",
     products: "Curso base; Mentoria avançada; Turmas ao vivo.",
     qualification_criteria:
       "Descobrir objetivo do lead, nível atual, urgência e orçamento antes de recomendar um produto.",
@@ -107,7 +107,7 @@ const instances: WhatsappInstance[] = [
   {
     id: "wa_1",
     user_id: "u_admin",
-    name: "Comercial Q7",
+    name: "Comercial Timm Advogado",
     phone: "+5511999990001",
     status: "connected",
     created_at: "2026-06-01T10:00:00.000Z",
