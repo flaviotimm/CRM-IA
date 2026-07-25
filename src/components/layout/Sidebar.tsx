@@ -28,10 +28,10 @@ export function Sidebar() {
     <aside className="hidden md:flex w-60 shrink-0 flex-col bg-sidebar text-sidebar-foreground">
       <div className="flex items-center gap-2 px-5 h-16 border-b border-white/10">
         <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary font-bold text-primary-foreground">
-          Q7
+          TA
         </div>
         <div className="leading-tight">
-          <div className="font-semibold">Q7 Educação</div>
+          <div className="font-semibold">Timm Advogado</div>
           <div className="text-xs text-sidebar-foreground/60">CRM + Agente IA</div>
         </div>
       </div>
